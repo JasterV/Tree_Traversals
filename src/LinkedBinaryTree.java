@@ -59,14 +59,14 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     public BinaryTree<E> left() {
         if (isEmpty())
             throw new NoSuchElementException();
-        return new LinkedBinaryTree<E>(root.left);
+        return new LinkedBinaryTree<>(root.left);
     }
 
     @Override
     public BinaryTree<E> right() {
         if (isEmpty())
             throw new NoSuchElementException();
-        return new LinkedBinaryTree<E>(root.right);
+        return new LinkedBinaryTree<>(root.right);
     }
 
     @Override
