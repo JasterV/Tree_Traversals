@@ -13,7 +13,7 @@ class IterativeTraversalsTest {
                     new LinkedBinaryTree<Integer>(25),
                     new LinkedBinaryTree<Integer>(53,
                             new LinkedBinaryTree<Integer>(2),
-                            new LinkedBinaryTree<>())
+                            null)
             )
     );
 

@@ -17,11 +17,11 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object obj) {
-            Node other = (Node) obj;
+            Node<E> other = (Node<E>) obj;
             return recEquals(this, other);
         }
 
-        private boolean recEquals(Node<E> root1, Node<E> root2){
+        private static <E> boolean recEquals(Node<E> root1, Node<E> root2){
             if(root1 == null || root2 == null) return root1 == root2;
             return root1.elem.equals(root2.elem)
                     && recEquals(root1.left, root2.left)
@@ -49,9 +49,8 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
     @Override
     public E elem() {
-        if (isEmpty()) {
+        if (isEmpty())
             throw new NoSuchElementException();
-        }
         return root.elem;
     }
 

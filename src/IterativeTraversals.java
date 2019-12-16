@@ -21,6 +21,22 @@ public class IterativeTraversals implements Traversals {
     }
 
     @Override
+    public <E> List<E> postOrder(BinaryTree<E> tree) {
+        List<E> list = new LinkedList<>();
+        Stack<BinaryTree<E>> stack = new Stack<>();
+        stack.push(tree);
+        while (!stack.isEmpty()) {
+            BinaryTree<E> current = stack.pop();
+            if (!current.isEmpty()) {
+                list.add(0, current.elem());
+                stack.push(current.left());
+                stack.push(current.right());
+            }
+        }
+        return list;
+    }
+
+    @Override
     public <E> List<E> inOrder(BinaryTree<E> tree) {
         List<E> list = new LinkedList<>();
         Stack<BinaryTree<E>> stack = new Stack<>();
@@ -34,22 +50,6 @@ public class IterativeTraversals implements Traversals {
                 current = stack.pop();
                 list.add(current.elem());
                 current = current.right();
-            }
-        }
-        return list;
-    }
-
-    @Override
-    public <E> List<E> postOrder(BinaryTree<E> tree) {
-        List<E> list = new LinkedList<>();
-        Stack<BinaryTree<E>> stack = new Stack<>();
-        stack.push(tree);
-        while (!stack.isEmpty()) {
-            BinaryTree<E> current = stack.pop();
-            if (!current.isEmpty()) {
-                list.add(0, current.elem());
-                if (current.right() != null) stack.push(current.left());
-                if (current.left() != null) stack.push(current.right());
             }
         }
         return list;
