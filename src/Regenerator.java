@@ -5,7 +5,4 @@ public class Regenerator {
         int index = 0;
         return null;
     }
-
-
-
 }
