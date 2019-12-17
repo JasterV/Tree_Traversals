@@ -4,8 +4,11 @@ public class Regenerator {
     public static <E> LinkedBinaryTree<E> postAndIn(List<? extends E> postOrder, List<? extends E> inOrder) {
         int treeSize = postOrder.size();
         if (treeSize == 0) {
-            return null;
-        } else {
+            return new LinkedBinaryTree<>();
+        } else if ( treeSize == 1){
+            E root = postOrder.get(treeSize - 1);
+            return new  LinkedBinaryTree<>(root);
+        }else {
             E root = postOrder.get(treeSize - 1);
             int indexOfRoot = inOrder.indexOf(root);
             List<? extends E> subInLeft =  inOrder.subList(0, indexOfRoot);
