@@ -26,9 +26,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         }
 
         /**
-         * This method recursively check if two nodes and all his child's are equals
+         * This method recursively checks if two nodes and all his child's are equals
          * @param root1 The first Node
          * @param root2 The second Node
+         * @return True if equals, otherwise false
          */
         private static <E> boolean recEquals(Node<E> root1, Node<E> root2) {
             if (root1 == null || root2 == null) return root1 == root2;
@@ -38,24 +39,47 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         }
     }
 
+
+    /**
+     * Empty LinkedBinaryTree constructor
+     */
     public LinkedBinaryTree() {
         root = null;
     }
 
+    /**
+     * A constructor that initialize an instance
+     * from the element that will be stored into the root
+     * @param elem The element of the root
+     */
     public LinkedBinaryTree(E elem) {
         root = new Node<E>(elem, null, null);
     }
 
+    /**
+     * A constructor that initialize an instance from an element, left tree and right tree
+     * @param elem The element to store into the root
+     * @param left The left binary tree
+     * @param right The right binary tree
+     */
     public LinkedBinaryTree(E elem, LinkedBinaryTree<E> left, LinkedBinaryTree<E> right) {
         Node<E> leftNode = (left == null) ? null : left.root;
         Node<E> rightNode = (right == null) ? null : right.root;
         root = new Node<E>(elem, leftNode, rightNode);
     }
 
+    /**
+     * A private constructor to initialize an instance from the root Node
+     * @param root
+     */
     private LinkedBinaryTree(Node<E> root) {
         this.root = root;
     }
 
+    /**
+     * A getter for the element stored into the root.
+     * @return An object of type E
+     */
     @Override
     public E elem() {
         if (isEmpty())
@@ -63,6 +87,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return root.elem;
     }
 
+    /**
+     * A getter for the left binary tree
+     * @return A BinaryTree
+     */
     @Override
     public BinaryTree<E> left() {
         if (isEmpty())
@@ -70,6 +98,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return new LinkedBinaryTree<>(root.left);
     }
 
+    /**
+     * A getter for the right binary tree
+     * @return A BinaryTree
+     */
     @Override
     public BinaryTree<E> right() {
         if (isEmpty())
@@ -77,11 +109,20 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         return new LinkedBinaryTree<>(root.right);
     }
 
+    /**
+     * Checks if the tree is empty
+     * @return True if empty, otherwise false
+     */
     @Override
     public boolean isEmpty() {
         return root == null;
     }
 
+    /**
+     * Checks if two LinkedBinaryTrees are equals
+     * @param obj The object to compare
+     * @return True if equals, otherwise false
+     */
     @Override
     @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
