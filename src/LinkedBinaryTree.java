@@ -18,10 +18,9 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         public boolean equals(Object obj) {
-            if (!(obj instanceof Node)) return false;
-            Node<E> other = (Node<E>) obj;
+            if (!(obj instanceof Node<?>)) return false;
+            Node<?> other = (Node<?>) obj;
             return recEquals(this, other);
         }
 
@@ -31,7 +30,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
          * @param root2 The second Node
          * @return True if equals, otherwise false
          */
-        private static <E> boolean recEquals(Node<E> root1, Node<E> root2) {
+        private static boolean recEquals(Node<?> root1, Node<?> root2) {
             if (root1 == null || root2 == null) return root1 == root2;
             return root1.elem.equals(root2.elem)
                     && recEquals(root1.left, root2.left)
@@ -70,7 +69,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 
     /**
      * A private constructor to initialize an instance from the root Node
-     * @param root
+     * @param root the root node
      */
     private LinkedBinaryTree(Node<E> root) {
         this.root = root;
