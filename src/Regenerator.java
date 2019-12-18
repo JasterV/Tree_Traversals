@@ -15,7 +15,7 @@ public class Regenerator {
             List<? extends E> subInRight =  inOrder.subList(indexOfRoot + 1, treeSize);
             List<? extends E> subPosLeft = postOrder.subList(0, indexOfRoot);
             List<? extends E> subPosRight = postOrder.subList(indexOfRoot, treeSize - 1);
-
+         
             return new LinkedBinaryTree<>(root,
                     postAndIn(subPosLeft,subInLeft),
                     postAndIn(subPosRight,subInRight));

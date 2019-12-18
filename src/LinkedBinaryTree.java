@@ -1,4 +1,5 @@
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
     private Node<E> root;
@@ -17,12 +18,13 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         @Override
         @SuppressWarnings("unchecked")
         public boolean equals(Object obj) {
+            if (!(obj instanceof Node)) return false;
             Node<E> other = (Node<E>) obj;
             return recEquals(this, other);
         }
 
-        private static <E> boolean recEquals(Node<E> root1, Node<E> root2){
-            if(root1 == null || root2 == null) return root1 == root2;
+        private static <E> boolean recEquals(Node<E> root1, Node<E> root2) {
+            if (root1 == null || root2 == null) return root1 == root2;
             return root1.elem.equals(root2.elem)
                     && recEquals(root1.left, root2.left)
                     && recEquals(root1.right, root2.right);
@@ -79,7 +81,6 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
         if (!(obj instanceof LinkedBinaryTree))
             return false;
         LinkedBinaryTree<E> lb = (LinkedBinaryTree<E>) obj;
-        if(root == null || lb.root == null) return root == lb.root;
-        return root.equals(lb.root);
+        return Node.recEquals(root, lb.root);
     }
 }
