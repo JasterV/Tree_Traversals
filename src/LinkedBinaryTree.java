@@ -3,6 +3,9 @@ import java.util.NoSuchElementException;
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
     private Node<E> root;
 
+    /**
+     * This class represents the internal linked nodes that every LinkedBinaryTree will contains as root
+     */
     private static class Node<E> {
         E elem;
         Node<E> left;
@@ -22,6 +25,11 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
             return recEquals(this, other);
         }
 
+        /**
+         * This method recursively check if two nodes and all his child's are equals
+         * @param root1 The first Node
+         * @param root2 The second Node
+         */
         private static <E> boolean recEquals(Node<E> root1, Node<E> root2) {
             if (root1 == null || root2 == null) return root1 == root2;
             return root1.elem.equals(root2.elem)

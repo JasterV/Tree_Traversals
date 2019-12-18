@@ -1,6 +1,13 @@
 import java.util.List;
 
 public class Regenerator {
+    /**
+     *This function reconstructs a LinkedBinaryTree from its post-order and in-order sequences.
+     * @param postOrder The post-order sequence of the tree
+     * @param inOrder   The in-order sequence of the tree
+     * @param <E> Generic type
+     * @return the reconstructed binary tree
+     */
     public static <E> LinkedBinaryTree<E> postAndIn(List<? extends E> postOrder, List<? extends E> inOrder) {
         int treeSize = postOrder.size();
         if (treeSize == 0)

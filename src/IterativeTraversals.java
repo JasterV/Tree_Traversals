@@ -4,6 +4,12 @@ import java.util.Stack;
 
 public class IterativeTraversals implements Traversals {
 
+    /**
+     * This method traverses a binary tree in a pre-order way
+     * @param tree the tree its going to be traversed
+     * @param <E> Generic type
+     * @return A list with the pre-order traversal elements of the tree
+     */
     @Override
     public <E> List<E> preOrder(BinaryTree<E> tree) {
         List<E> list = new LinkedList<>();
@@ -20,6 +26,12 @@ public class IterativeTraversals implements Traversals {
         return list;
     }
 
+    /**
+     * This method traverses a binary tree in a post-order way
+     * @param tree the tree its going to be traversed
+     * @param <E> Generic type
+     * @return A list with the post-order traversal elements of the tree
+     */
     @Override
     public <E> List<E> postOrder(BinaryTree<E> tree) {
         List<E> list = new LinkedList<>();
@@ -36,6 +48,12 @@ public class IterativeTraversals implements Traversals {
         return list;
     }
 
+    /**
+     * This method traverses a binary tree in a in-order way
+     * @param tree the tree its going to be traversed
+     * @param <E> Generic type
+     * @return A list with the in-order traversal elements of the tree
+     */
     @Override
     public <E> List<E> inOrder(BinaryTree<E> tree) {
         List<E> list = new LinkedList<>();
