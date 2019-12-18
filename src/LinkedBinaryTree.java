@@ -1,5 +1,4 @@
 import java.util.NoSuchElementException;
-import java.util.Objects;
 
 public class LinkedBinaryTree<E> implements BinaryTree<E> {
     private Node<E> root;
