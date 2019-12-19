@@ -123,11 +123,10 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
      * @return True if equals, otherwise false
      */
     @Override
-    @SuppressWarnings("unchecked")
     public boolean equals(Object obj) {
         if (!(obj instanceof LinkedBinaryTree))
             return false;
-        LinkedBinaryTree<E> lb = (LinkedBinaryTree<E>) obj;
+        LinkedBinaryTree<?> lb = (LinkedBinaryTree<?>) obj;
         return Node.recEquals(root, lb.root);
     }
 }
