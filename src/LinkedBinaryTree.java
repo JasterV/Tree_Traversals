@@ -64,7 +64,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     public LinkedBinaryTree(E elem, LinkedBinaryTree<E> left, LinkedBinaryTree<E> right) {
         Node<E> leftNode = (left == null) ? null : left.root;
         Node<E> rightNode = (right == null) ? null : right.root;
-        root = new Node<E>(elem, leftNode, rightNode);
+        root = new Node<>(elem, leftNode, rightNode);
     }
 
     /**
