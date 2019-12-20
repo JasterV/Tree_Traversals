@@ -11,7 +11,7 @@
 \setmarginsrb{3 cm }{ 2.5cm }{3 cm }{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
 \title{Binarytree}
 \author{Martin, Francisco Manuel \\
-        Martinez, Victor
+Martinez, Victor
 }
 
 \makeatletter
@@ -30,125 +30,112 @@
 
 \begin{document}
     \begin{titlepage}
-	\centering
-    \vspace*{0.5 cm}
+        \centering
+        \vspace*{0.5 cm}
 
-    \textsc{\LARGE Universidad Politécnica de Lleida}\\[2.0 cm]	% University Name
-	\textsc{\large Practica 5}\\[0.5 cm]				% Course Name
-	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
-	{ \huge \bfseries \thetitle}\\
-	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+        \textsc{\LARGE Universidad Politécnica de Lleida}\\[2.0 cm]	% University Name
+        \textsc{\large Practica 5}\\[0.5 cm]				% Course Name
+        \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+        { \huge \bfseries \thetitle}\\
+        \rule{\linewidth}{0.2 mm} \\[1.5 cm]
 
-	\begin{minipage}{0.4\textwidth}
-		\begin{flushleft} \large
-			\emph{Author:}\\
-			\theauthor
-			\end{flushleft}
-			\end{minipage}~
-			\begin{minipage}{0.4\textwidth}
-			\begin{flushright} \large
-			\emph{DNI:} \\
-			48057095k \\
-			84848893x% Your Student Number
-		\end{flushright}
-	\end{minipage}\\[2 cm]
+        \begin{minipage}{0.4\textwidth}
+            \begin{flushleft} \large
+            \emph{Author:}\\
+            \theauthor
+            \end{flushleft}
+        \end{minipage}~
+        \begin{minipage}{0.4\textwidth}
+            \begin{flushright} \large
+            \emph{DNI:} \\
+            48057095k \\
+            78100640T% Your Student Number
+            \end{flushright}
+        \end{minipage}\\[2 cm]
 
-	{\large \thedate}\\[2 cm]
+        {\large \thedate}\\[2 cm]
 
-	\vfill
+        \vfill
 
-\end{titlepage}
-\tableofcontents
-\pagebreak
-\section{Introducción}
-\section{Tarea 1: Implementación de los arboles binarios}
+    \end{titlepage}
+    \tableofcontents
+    \pagebreak
+
+    \section{Introducción}
+
+    \section{Tarea 1: Implementación de los arboles binarios}
     \subsection{Constructores}
-    Para generar la rama \textit{left} y la rama \textit{right} que
-    generan un nuevo árbol a partir del nodo \textit{root} creamos el
-    constructor como se recomienda en la documentación de la practica de la
-    siguiente forma.
-\begin{lstlisting}[lenguage = Java]
-this.root = root;
-\end{lstlisting}
-    \subsection{\textit{equals}}
-        \subsubsection{\textit{equals} para Arboles binarios}
-            Para comenzar comprobamos que el \textit{object} sea instancia de
-            \textit{LinkedBinaryTree} si no lo es devuelve \textbf{false} si no hacemos
-            un cast de object a un \textit{LinkedBinaryTree}. 
-            Siguiendo con el orden de ejecución llamamos a la función recursiva
-            que apartir de la root de los dos arboles comprobara si son el mismo.
-    \subsubsection{\textit{equals} para Nodos}
-            De nuevo como en la otra implementación de equals hacemos
-            \textit{instanceof} esta vez de \textit{Node} y cast para llamar a la misma
-            función recursiva que llamamos para \textit{LinkedBinaryTree}.
-    \subsubsection{Función recEquals}
-            Esta función auxiliar, que llamamos tanto en el equals para arboles o
-            para nodos, de forma recursiva comprueba si dos nodos
-            son los mismos apartir del root comprobando sus ramas derecha e izquierda y
-            comparándolas en el momento que alguno de sus hijos no sea igual
-            evaluara a falso.
-            \newline
-\section{Tarea 2: Recorridos iterativos en árboles binarios}
+    En esta sección solo vamos a comentar un pequeño detalle sobre el tercer constructor. \newline
+    Tratamos \textbf{left} y \textbf{right} de manera que, si uno de ellos es null inicializamos la instancia de Node correspondiente a null. \newline
+    De esta manera evitamos un NullPointerException en caso de intentar acceder al atributo root del arbol en cuestión.
+
+    \subsection{método equals}
+    \subsubsection{equals de LinkedBinaryTree}
+    En primer lugar comprobamos que el objecto de tipo \textit{Object} pasado como parámetro apunte a una instancia de LinkedBinaryTree
+    Si es así, realizamos un cast y ejecutamos el método estático \textit{recEquals} de la clase Node que comprobará recursivamente si los \textit{roots} de los arboles són iguales.
+    \subsubsection{equals de Node}
+    Aunque este método no lo usamos en LinkedBinaryTree ya que directamente empleamos el método \textit{recEquals}, nunca está de más definir el método equals dentro de una classe.
+    En este caso comprobamos que el parámetro \textit{obj} apunte a una instancia de Node y
+    ejecutamos el método \textit{recEquals}
+    \subsubsection{método recEquals}
+    En primer lugar comprobamos si alguno de los parámetros apunta a null, si es así devolvemos el resultado de igualar los dos parámetros (si uno es null el otro también debe serlo para cumplir la igualdad).
+    En caso contrario seguimos comprobando si los dos nodos són iguales (Contienen el mismo elemento y sus nodos derecho e izquierdo són también iguales).
+    \newline
+
+    \section{Tarea 2: Recorridos iterativos en árboles binarios}
+
     \subsection{Interfaz Traversals}
     \textbf{ ¿Qué diferencias provocaría que la interfaz fuera genérica y los
-        métodos no?}\\
-            En el caso que tenemos los métodos son genéricos i por ello aunque la
-            \textit{interface} no es genérica podemos trabajar con todos los elementos
-            que contiene \textit{Binarytree}. En el caso contrario no declaras un
-            parámetro de tipo que esto conllevara a que estarás sujeto al tipo
-            donde instanciamos la clase \textit{traversals}.
-       \subsection{Clase Iterative Traversals}
+    métodos no?}\\
+    En caso de que los métodos sean genéricos y la clase no, podremos usar los métodos con cualquier BinaryTree sin importar de que tipo sean los elementos que contiene.
 
-            En esta implementación como indica en la documentación de la
-            practica, usaremos la forma imperativa del recorrido haciendo uso
-            de una pila tal como lo haría la maquina virtual de Java.
-        \subsubsection{Preorden}
-        Este recorrido recuerda al algoritmo \textit{DFS} donde hace un búsqueda
-        en profundidad, al alcanzar la hoja mas a la izquierda busca en la pila
-        la hoja derecha si no la encuentra busca el nodo superior a este y busca
-        su nodo derecho y así hasta eliminar de la pila todos los nodos.
-        \subsubsection{Inorder}
-        Este recorrido consiste en localizar la hoja mas a la izquierda y
-        comenzar la lista desde allí después de localizar la hoja visitamos el
-        nodo superior y el elemento derecho no lo incluiremos en la lista hasta
-        llegar al la hoja izquierda de ese nodo.
-        \subsubsection{Postorder}
-        En este usa la pila para cargar los nodos hermanos que visitaremos antes
-        de visitar al padre, por eso en la lista almacenamos la ultima hoja y
-        cargamos en la pila las ramas de su \textit{root} y al así almacenamos
-        en la pila las funciones para recorrer hermanos antes que al padre.
+    En cambio, si implementamos la interfaz de manera genérica y los métodos no-genericos, solo podremos usar dichos métodos con arboles binarios que contengan elementos del mismo tipo con el cual hemos inicializado la instancia de \textbf{Traversals}, \newline por lo cual necesitaremos crear una instancia de \textbf{Traversals} para cada arbol binario que definamos con un tipo distinto.
 
-\section{Tarea 3: Reconstrucción del árbol binario}
-Para esta implementación los dos miembros del grupo hicimos dos variantes una
-usando punteros y otra con sublistas. En el caso de los punteros nos resulto muy
-difícil realizarlo, teníamos que comprobar muchos casos donde los punteros se
-salían del indexó, al final optamos por la implementación mas simple que requería
-usar sublistas estas eliminaban el problema con los índices.
+    \subsection{Clase IterativeTraversals}
+    En esta clase implementamos los diferentes recorridos en profundidad sobre arboles binarios de manera iterativa. \newline
+    Los stacks con los que trabajamos contendrán elementos de tipo BinaryTree, y así iremos comprobando si están vacíos o no para realizar las operaciones.\newline
+    En la explicación de los siguientes métodos voy a referirme algunas veces a \textit{el último elemento introducido el en stack} como el elemento que contiene el root del arbol que es el objeto con el que realmente trabajamos.
 
-Esta implementación se sustenta apartir del razonamiento en el cual tomamos como
-primer elemento el root del árbol del ultimo elemento de \textit{postorden} y
-buscamos este mismo elemento en \textbf{inorden}, los elementos por la izquierda formaran
-parte del arboles izquierdo y el derecho de los elementos de la derecha, el
-indexó donde se encuentra este elemento los usaremos como herramienta de corte
-para las sublistas ya que marca el inicio de un árbol y su final. Hacemos este
-algoritmo de forma recursiva i así alcanzamos a formar el árbol apartir de las
-dos listas.
-\section{Conclusiones}
-En esta practica hemos aprendido mucho sobre el comportamiento de genéricos
-apartir de uno de los errores que cometimos en el primer apartado, en este
-apartado pretendíamos hacer un cast de \textit{object} usando los comodines
-\textbf{<E>} hasta darnos cuenta que no podríamos usarlos, todo sucedió por que
-el compilador no nos devolvía ningún error. Cambiamos los comodines a
-\textbf{<?>} para poder hacer el cast. Pero estuvimos investigando el porque que
-hacia que nuestro cast no se quejaba haciendo test exhaustivos para encontrar el
-error.
+    \subsubsection{Preorder}
+    Como debemos recorrer los nodos con el patrón \textit{Parent}, \textit{left}, \textit{right}, en este algoritmo empezamos añadiendo al stack el arbol.\newline
+    Vamos añadiendo a la lista el último elemento introducido en el stack y llenando el stack con los hijos derecho e izquierdo del elemento, tal y como lo plantearíamos en el algoritmo recursivo.
 
-Otro aprendizaje valioso surjio en la tarea tres cuando queriamos ver si suponia
-un sobre coste el uso de sublistas en lugar de indices porque en un principio
-creiamos que este uso haria una duplicacion de listas. Despues de repasar el
-codigo usado en las sublistas vimos que con el uso de indices como en nuestra
-idea, permitia hacer vistas a la lista original y cuando hacias una sublista de
-una sublista hacias una vista de la sublista que apuntaba a la lista original.
+    \subsubsection{Inorder}
+    La idea del algoritmo implementado para éste recorrido (\textit{left}, \textit{parent}, \textit{right}) se basa en posicionarse en el elemento más a la izquierda del árbol y, en cuanto lo encontramos lo añadimos a la lista, añadimos a su padre (que estamos seguros de que será el último elemento añadido en el stack) y visitamos el hijo derecho. \newline
+    Seguimos hasta que el stack esté vacío y el último arbol visitado esté vacío también.
+
+    \subsubsection{Postorder}
+    El algoritmo implementado en éste recorrido (\textit{left}, \textit{right}, \textit{parent})
+    se basa en una idea un poco diferente a las anteriores.\newline
+    Se trata en mirar el recorrido de manera inversa, por lo que recorreremos de \textit{Parent} a \textit{right} a \textit{left} y iremos añadiendo los elementos al principio de la lista y no al final. De esta manera el código nos queda muy simple y prácticamente igual a la implementación de PreOrder solo que cambiando el orden en que añadimos los hijos.  \newline
+    Cabe destacar que es necesario que la lista sea de tipo \textit{LinkedList} para que las inserciones sean óptimas, en caso de ser un \textit{ArrayList} estaríamos aumentando el coste del algoritmo prácticamente de manera exponencial.
+
+
+    \section{Tarea 3: Reconstrucción del árbol binario}
+    La idea en la resolución de éste método se basa en los dos argumentos siguientes:
+    \newline
+    El último elemento de la lista que contiene los elementos en postOrden siempre será el root del árbol.
+    \newline
+    Debemos encontrar la posición de ese elemento en la lista de inOrden para de esta manera poder separar los elementos que se encuentran a su izquierda y a su derecha como árbol izquierdo y árbol derecho.
+    \newline
+    Siguiendo estas dos premisas implementamos el método de manera recursiva mediante sublistas.
+
+    \section{Conclusiones}
+    En esta practica hemos aprendido mucho sobre el comportamiento de genéricos
+    apartir de uno de los errores que cometimos en el primer apartado, en este
+    apartado pretendíamos hacer un cast de \textit{object} usando los comodines
+    \textbf{<E>} hasta darnos cuenta que no podríamos usarlos, todo sucedió por que
+    el compilador no nos devolvía ningún error. Cambiamos los comodines a
+    \textbf{<?>} para poder hacer el cast. Pero estuvimos investigando el porque que
+    hacia que nuestro cast no se quejaba haciendo test exhaustivos para encontrar el
+    error.
+
+    Otro aprendizaje valioso surjio en la tarea tres cuando queriamos ver si suponia
+    un sobre coste el uso de sublistas en lugar de indices porque en un principio
+    creiamos que este uso haria una duplicacion de listas. Despues de repasar el
+    codigo usado en las sublistas vimos que con el uso de indices como en nuestra
+    idea, permitia hacer vistas a la lista original y cuando hacias una sublista de
+    una sublista hacias una vista de la sublista que apuntaba a la lista original.
 
 
 \end{document}
