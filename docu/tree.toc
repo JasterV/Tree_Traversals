@@ -1,0 +1,15 @@
+\babel@toc {nil}{}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}% 
+\contentsline {section}{\numberline {2}Tarea 1: Implementaci\IeC {\'o}n de los arboles binarios}{2}% 
+\contentsline {subsection}{\numberline {2.1}Constructores}{2}% 
+\contentsline {subsection}{\numberline {2.2}\textit {equals}}{2}% 
+\contentsline {subsubsection}{\numberline {2.2.1}\textit {equals} para Arboles binarios}{2}% 
+\contentsline {subsubsection}{\numberline {2.2.2}\textit {equals} para Nodos}{2}% 
+\contentsline {subsubsection}{\numberline {2.2.3}Funcion recEquals}{2}% 
+\contentsline {section}{\numberline {3}Tarea 2: Recorridos iterativos en \IeC {\'a}rboles binarios}{2}% 
+\contentsline {subsection}{\numberline {3.1}Interfaz Traversals}{2}% 
+\contentsline {subsection}{\numberline {3.2}Clase Iterative Traversals}{2}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Preorden}{3}% 
+\contentsline {subsubsection}{\numberline {3.2.2}Inorder}{3}% 
+\contentsline {subsubsection}{\numberline {3.2.3}Postorder}{3}% 
+\contentsline {section}{\numberline {4}Tarea 3: Reconstrucci\IeC {\'o}n del \IeC {\'a}rbol binario}{3}% 
