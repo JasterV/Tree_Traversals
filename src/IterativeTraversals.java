@@ -40,9 +40,9 @@ public class IterativeTraversals implements Traversals {
         while (!stack.isEmpty()) {
             BinaryTree<E> current = stack.pop();
             if (!current.isEmpty()) {
-                list.add(0, current.elem());
                 stack.push(current.left());
                 stack.push(current.right());
+                list.add(0, current.elem());
             }
         }
         return list;
